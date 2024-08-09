@@ -1,43 +1,21 @@
-# text: String Functions in SQLite
+# text: String functions in SQLite
 
-A rich set of string functions, from `slice`, `contains` and `count` to `split_part`, `trim` and `repeat`.
+The `sqlean-text` extension provides a rich set of functions for working with text.
+
+Also provides Unicode-aware functions for changing text case (upper, lower, title), plus a custom nocase collation.
 
 Many of the functions are Postgres-compatible (i.e. they have the same alias and logic as in PostgreSQL). It can be useful when migrating from SQLite to PostgreSQL or vice versa.
 
-Provides Unicode-aware functions for changing text case (upper, lower, title), plus a custom nocase collation.
-
 Regular expression functions are in the separate [regexp](regexp.md) extension.
 
-[bitsize](#text_bitsize) •
-[concat](#text_concat) •
-[contains](#text_contains) •
-[count](#text_count) •
-[has_prefix](#text_has_prefix) •
-[has_suffix](#text_has_suffix) •
-[index](#text_index) •
-[join](#text_join) •
-[last_index](#text_last_index) •
-[left](#text_left) •
-[length](#text_length) •
-[like](#text_like) •
-[lower](#text_lower) •
-[lpad](#text_lpad) •
-[ltrim](#text_ltrim) •
-[nocase](#text_nocase) •
-[repeat](#text_repeat) •
-[replace](#text_replace) •
-[reverse](#text_reverse) •
-[right](#text_right) •
-[rpad](#text_rpad) •
-[rtrim](#text_rtrim) •
-[size](#text_size) •
-[slice](#text_slice) •
-[split](#text_split) •
-[substring](#text_substring) •
-[title](#text_title) •
-[translate](#text_translate) •
-[trim](#text_trim) •
-[upper](#text_upper)
+[Substrings and slicing](#substrings-and-slicing) •
+[Search and match](#search-and-match) •
+[Split and join](#split-and-join) •
+[Trim and pad](#trim-and-pad) •
+[Change case](#change-case) •
+[Other modifications](#other-modifications) •
+[String properties](#string-properties) •
+[Installation and usage](#installation-and-usage)
 
 ## Substrings and slicing
 
@@ -256,7 +234,7 @@ select text_split('one|two|three', '|', 2);
 select text_split('one|two|three', '|', -1);
 -- three
 
-text_split('one|two|three', ';', 2);
+select text_split('one|two|three', ';', 2);
 -- (empty string)
 ```
 
@@ -570,17 +548,19 @@ select text_bitsize('one');
 
 Postgres-compatible, aliased as `bit_length`.
 
-## Installation and Usage
+## Installation and usage
 
 SQLite command-line interface:
 
 ```
 sqlite> .load ./text
-sqlite> select reverse('hello');
+sqlite> select text_reverse('hello');
 ```
 
-See [How to Install an Extension](install.md) for usage with IDE, Python, etc.
+See [How to install an extension](install.md) for usage with IDE, Python, etc.
 
-[⬇️ Download](https://github.com/nalgeon/sqlean/releases/latest) •
-[✨ Explore](https://github.com/nalgeon/sqlean) •
-[🚀 Follow](https://antonz.org/subscribe/)
+↓ [Download](https://github.com/nalgeon/sqlean/releases/latest) the extension.
+
+⛱ [Explore](https://github.com/nalgeon/sqlean) other extensions.
+
+★ [Subscribe](https://antonz.org/subscribe/) to stay on top of new features.
